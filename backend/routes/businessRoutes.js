@@ -3,6 +3,6 @@ const express = require('express');
 const router = express.Router();
 
 router.post('/business-data', getBusinessDetails);
-router.post('/regenerate-headline', regenerateHeadlines)
+router.get('/regenerate-headline', regenerateHeadlines)
 
 module.exports = router;
