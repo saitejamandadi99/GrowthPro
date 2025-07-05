@@ -35,6 +35,7 @@ const BusinessForm = ({onSubmit}) =>{
           type="text"
           name="name"
           value={name}
+          required
           onChange={handleNameChange}
           className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="e.g., Cake & Co"
@@ -47,6 +48,7 @@ const BusinessForm = ({onSubmit}) =>{
           type="text"
           name="location"
           value={location}
+          required
           onChange={handleLocationChange}
           className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="e.g., Mumbai"
