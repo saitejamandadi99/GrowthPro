@@ -63,3 +63,38 @@ Response
   }
 }
 ```
+GET /api/regenerate-headline
+
+Query Params:
+
+
+```bash
+?name=Cake & Co&location=Mumbai
+```
+Response:
+
+```bash
+{
+  "headline": "Freshly Baked Delights Await in Mumbai!"
+}
+```
+
+Folder Structure
+
+GrowthPro/
+├── backend/
+│   ├── index.js
+│   ├── routes/
+│   └── package.json
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── BusinessForm.jsx
+│   │   │   └── DisplayCard.jsx
+│   ├── index.html
+│   ├── App.jsx
+│   └── package.json
+
+#Author
+Saiteja Mandadi
+saitejamandadi99
