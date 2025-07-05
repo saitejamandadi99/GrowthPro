@@ -11,29 +11,39 @@ function App() {
   const [formData, setFormData] = useState()
 
   const handleSubmit = async (formData) =>{
-    setLoading(true)
-    console.log('FormData: ', formData)
-    setFormData(formData)
-
-    const url = 'http://localhost:5000/api/business-data'
-    const response = await axios.post(url, formData)
-    const data = response.data.business
-    setLoading(false)
+    try {
+      setLoading(true)
+      console.log('FormData: ', formData)
+      setFormData(formData)
+      const url = 'http://localhost:5000/api/business-data'
+      const response = await axios.post(url, formData)
+      const data = response.data.business
+    
     setBusinessData(data)
+    setLoading(false)
+      
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('An error occurred while submitting the form. Please try again.');
+      setLoading(false);
+      
+    }
     
   }
   const onClickRegenHeadline = async () =>{
-        
-        console.log('Business Data: ', businessData);
-        console.log('Form Data: ', formData);
+        try {
+          const url = 'http://localhost:5000/api/regenerate-headline'
+          const response = await axios.get(url,{params: formData})
+          const data = response.data.headline
+          setBusinessData(
+            (prevData) => ({...prevData, headline:data})
+          )
+        } catch (error) {
+          console.error('Error regenerating headline:', error);
+          alert('An error occurred while regenerating the headline. Please try again.');
 
-        const url = 'http://localhost:5000/api/regenerate-headline'
-        const response = await axios.get(url,{params: formData})
-        const data = response.data.headline
-        setBusinessData(
-          (prevData) => ({...prevData, headline:data})
-        )
-
+          
+        }
     }
   return (
     <div>

@@ -6,15 +6,21 @@ const BusinessForm = ({onSubmit}) =>{
     const [location, setLocation] = useState('');
     const [isLoading, setLoading] = useState(false);
     const handleSubmit = (e) =>{
-        e.preventDefault();
-        if(!name || !location){
-            alert('Please fill all fields');
-            return;
+        try {
+            e.preventDefault();
+            if(!name || !location){
+                alert('Please fill all fields');
+                return;
+            }
+            setLoading(true);
+            const formData = {name, location};
+            onSubmit(formData);
+            setLoading(false)
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('An error occurred while submitting the form. Please try again.');
+            setLoading(false);
         }
-        setLoading(true);
-        const formData = {name, location};
-        onSubmit(formData);
-        setLoading(false)
     }
 
     const handleNameChange = (e) =>{
