@@ -4,7 +4,23 @@ const cors = require('cors');
 const app = express();
 app.use(express.json());
 
-app.use(cors());
+const allowedOrigins = [
+  'https://growth-pro-mauve.vercel.app',
+  'https://growth-pro-git-master-saitejamandadi99s-projects.vercel.app',
+  'https://growth-q1m9vi5is-saitejamandadi99s-projects.vercel.app',
+  'http://localhost:5173'
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  }
+}));
 
 
 
