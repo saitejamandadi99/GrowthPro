@@ -80,7 +80,7 @@ Response:
 ```
 
 Folder Structure
-
+```bash
 GrowthPro/
 ├── backend/
 │   ├── index.js
@@ -94,7 +94,7 @@ GrowthPro/
 │   ├── index.html
 │   ├── App.jsx
 │   └── package.json
-
+```
 #Author
 Saiteja Mandadi
-saitejamandadi99
+
