@@ -4,6 +4,7 @@ import './index.css'
 import axios from 'axios'
 import BusinessForm from './components/BusinessForm'
 import DisplayCard from './components/DisplayCard'
+import { ClipLoader } from "react-spinners";
 
 function App() {
   const [businessData, setBusinessData] = useState({})
@@ -13,7 +14,6 @@ function App() {
   const handleSubmit = async (formData) =>{
     try {
       setLoading(true)
-      console.log('FormData: ', formData)
       setFormData(formData)
       const url = 'http://localhost:5000/api/business-data'
       const response = await axios.post(url, formData)
@@ -49,7 +49,10 @@ function App() {
     <div>
       <h1>This is Growth API</h1>
       <BusinessForm onSubmit={handleSubmit} />
-      {isLoading?<p>Loading ...</p>:<DisplayCard businessData = {businessData} regenHeadline = {onClickRegenHeadline} />}
+      {isLoading?
+      <ClipLoader color="#3b82f6" loading={true} size={35} />
+      :
+      <DisplayCard businessData = {businessData} regenHeadline = {onClickRegenHeadline} />}
     </div>
   )
 }
