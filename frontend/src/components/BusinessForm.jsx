@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import '../index.css'
 
 const BusinessForm = ({onSubmit}) =>{
     const [name, setName] = useState('');
@@ -13,6 +14,7 @@ const BusinessForm = ({onSubmit}) =>{
         setLoading(true);
         const formData = {name, location};
         onSubmit(formData);
+        setLoading(false)
     }
 
     const handleNameChange = (e) =>{

@@ -28,7 +28,7 @@ const getBusinessDetails = (req, res) =>{
         reviews:randomReviews,
         headline:randomHeadline,
     }
-    res.status(200).json(business);
+    res.status(200).json({'business':business});
 
 }
 
