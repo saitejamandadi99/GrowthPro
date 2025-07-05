@@ -15,7 +15,7 @@ function App() {
     try {
       setLoading(true)
       setFormData(formData)
-      const url = 'http://localhost:5000/api/business-data'
+      const url = 'https://growthpro-dawu.onrender.com/api/business-data'
       const response = await axios.post(url, formData)
       const data = response.data.business
       setBusinessData(data)
@@ -29,7 +29,7 @@ function App() {
 
   const onClickRegenHeadline = async () => {
     try {
-      const url = 'http://localhost:5000/api/regenerate-headline'
+      const url = 'https://growthpro-dawu.onrender.com/api/regenerate-headline'
       const response = await axios.get(url, { params: formData })
       const data = response.data.headline
       setBusinessData(prevData => ({ ...prevData, headline: data }))
