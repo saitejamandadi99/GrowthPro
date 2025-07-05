@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import '../index.css'
-
+import { ClipLoader } from "react-spinners";
 const BusinessForm = ({onSubmit}) =>{
     const [name, setName] = useState('');
     const [location, setLocation] = useState('');
@@ -15,10 +15,14 @@ const BusinessForm = ({onSubmit}) =>{
             setLoading(true);
             const formData = {name, location};
             onSubmit(formData);
-            setLoading(false)
         } catch (error) {
             console.error('Error submitting form:', error);
             alert('An error occurred while submitting the form. Please try again.');
+        }
+        finally
+        {
+            setName('');
+            setLocation('');
             setLoading(false);
         }
     }
@@ -66,7 +70,9 @@ const BusinessForm = ({onSubmit}) =>{
         className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition"
         disabled={isLoading}
       >
-        {isLoading ? 'Loading...' : 'Get Reviews'} 
+        {isLoading ? 
+        <ClipLoader color="#3b82f6" loading={true} size={35} />
+        : 'Get Reviews'} 
       </button>
     </form>
     )
